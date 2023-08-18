@@ -35,7 +35,7 @@ Route::prefix('shops')
     ->group(function () {
         Route::get('index', [ShopController::class, 'index'])->name('shops.index');
         Route::get('edit/{shop}', [ShopController::class, 'edit'])->name('shops.edit');
-        Route::get('update/{shop}', [ShopController::class, 'update'])->name('shops.update');
+        Route::post('update/{shop}', [ShopController::class, 'update'])->name('shops.update');
     });
 
 Route::get('/dashboard', function () {
