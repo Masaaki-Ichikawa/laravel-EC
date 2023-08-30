@@ -28,7 +28,7 @@ class ShopController extends Controller
                 $ownerId = Auth::id();
                 if ($shopId !== $ownerId) { //同じでなかったら
                     abort(404); //404画面表示
-                }
+                }   
             }
             return $next($request);
         });
