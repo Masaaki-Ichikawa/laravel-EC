@@ -10,8 +10,10 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <x-input-error :messages="$errors->get('image')" class="mt-2" />
+                    <x-flash-message status="session('status')" />
                     <form action="{{ route('owner.products.update', ['product' => $product->id]) }}" method="post">
                         @csrf
+                        @method('put')
                         <div class="-m-2">
                             <div class="p-2 w-1/2 mx-auto">
                                 <div class="relative">
@@ -23,28 +25,28 @@
                             <div class="p-2 w-1/2 mx-auto">
                                 <div class="relative">
                                     <label for="information" class="leading-7 text-sm text-gray-600">商品情報 ※必須</label>
-                                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                                    <x-input-error :messages="$errors->get('information')" class="mt-2" />
                                     <textarea id="information" name="information" rows="10" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ $product->information }}</textarea>
                                 </div>
                             </div>
                             <div class="p-2 w-1/2 mx-auto">
                                 <div class="relative">
                                     <label for="price" class="leading-7 text-sm text-gray-600">価格 ※必須</label>
-                                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                                    <x-input-error :messages="$errors->get('price')" class="mt-2" />
                                     <input type="number" id="price" name="price" value="{{ $product->price }}" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 </div>
                             </div>
                             <div class="p-2 w-1/2 mx-auto">
                                 <div class="relative">
                                     <label for="sort_order" class="leading-7 text-sm text-gray-600">表示順</label>
-                                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                                    <x-input-error :messages="$errors->get('sort_order')" class="mt-2" />
                                     <input type="number" id="sort_order" name="sort_order" value="{{ $product->sort_order }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 </div>
                             </div>
                             <div class="p-2 w-1/2 mx-auto">
                                 <div class="relative">
                                     <label for="current_quantity" class="leading-7 text-sm text-gray-600">現在の在庫</label>
-                                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                                    <x-input-error :messages="$errors->get('current_quantity')" class="mt-2" />
                                     <input type="hidden" id="current_quantity" name="current_quantity" value="{{ $quantity }}" >
                                     <div class="w-full bg-gray-100 bg-opacity-50 rounded text-base outline-none text-gray-700 py-1 px-3 leading-8">{{ $quantity }}</div>
                                 </div>
@@ -58,7 +60,7 @@
                             <div class="p-2 w-1/2 mx-auto">
                                 <div class="relative">
                                     <label for="quantity" class="leading-7 text-sm text-gray-600">数量 ※必須</label>
-                                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                                    <x-input-error :messages="$errors->get('quantity')" class="mt-2" />
                                     <input type="number" id="quantity" name="quantity" value="0" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                     <span class="text-sm">0~99の範囲で入力してください。</span>
                                 </div>
